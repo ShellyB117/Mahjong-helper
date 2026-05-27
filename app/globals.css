@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f1419;
+  --panel: #1a2332;
+  --border: #2d3a4f;
+  --text: #e8edf4;
+  --muted: #8b9cb3;
+  --accent: #c9a227;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Mahjong tile faces — light bodies on dark UI for clear suit contrast */
+.tile-man,
+.tile-pin,
+.tile-sou,
+.tile-wind,
+.tile-dragon-white,
+.tile-dragon-green,
+.tile-dragon-red {
+  border-width: 2px;
+  border-style: solid;
+  font-weight: 700;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.tile-man {
+  background: linear-gradient(165deg, #fff9f2 0%, #f2ddd0 48%, #e8c9b8 100%);
+  border-color: #c94a3a;
+  color: #9f1239;
+}
+
+.tile-pin {
+  background: linear-gradient(165deg, #f4f9ff 0%, #dce9f8 48%, #c5daf0 100%);
+  border-color: #2563eb;
+  color: #1d4ed8;
+}
+
+.tile-sou {
+  background: linear-gradient(165deg, #f3fcf6 0%, #d8eedc 48%, #bdd9c4 100%);
+  border-color: #15803d;
+  color: #166534;
+}
+
+.tile-wind {
+  background: linear-gradient(165deg, #f5f3ff 0%, #e4dff5 48%, #d0c8ea 100%);
+  border-color: #6d28d9;
+  color: #5b21b6;
+}
+
+.tile-dragon-white {
+  background: linear-gradient(165deg, #fafafa 0%, #e8e8e8 48%, #d4d4d4 100%);
+  border-color: #737373;
+  color: #404040;
+}
+
+.tile-dragon-green {
+  background: linear-gradient(165deg, #ecfdf5 0%, #bbf7d0 48%, #86efac 100%);
+  border-color: #059669;
+  color: #047857;
+}
+
+.tile-dragon-red {
+  background: linear-gradient(165deg, #fff1f2 0%, #fecdd3 48%, #fda4af 100%);
+  border-color: #dc2626;
+  color: #b91c1c;
+}
+
+/* Remaining-tiles grid */
+.remain-cell-man {
+  background: rgba(201, 74, 58, 0.22);
+  color: #fca5a5;
+}
+.remain-cell-pin {
+  background: rgba(37, 99, 235, 0.22);
+  color: #93c5fd;
+}
+.remain-cell-sou {
+  background: rgba(21, 128, 61, 0.22);
+  color: #86efac;
+}
+.remain-cell-honor {
+  background: rgba(109, 40, 217, 0.2);
+  color: #c4b5fd;
+}
+.remain-cell-dead {
+  background: rgba(127, 29, 29, 0.45);
+  color: #fca5a5;
+  opacity: 0.65;
+}
