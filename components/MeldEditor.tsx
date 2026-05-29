@@ -105,8 +105,8 @@ export function MeldEditor({
       </div>
 
       <p className="text-[10px] text-[var(--muted)] mt-2">
-        Select tiles in the palette, then use the same tile clicks to fill the meld
-        builder (via parent).
+        Choose &quot;Meld builder&quot;, then tap tiles in the palette once each to
+        fill this row.
       </p>
     </div>
   );

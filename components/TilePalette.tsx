@@ -5,16 +5,11 @@ import type { TileId } from "@/lib/mahjong/types";
 import { Tile } from "./Tile";
 
 type TilePaletteProps = {
-  selected: TileId | null;
   onSelect: (tile: TileId) => void;
   remaining: Record<TileId, number>;
 };
 
-export function TilePalette({
-  selected,
-  onSelect,
-  remaining,
-}: TilePaletteProps) {
+export function TilePalette({ onSelect, remaining }: TilePaletteProps) {
   const suits = SUIT_SECTIONS.map(({ suit, label, hint }) => ({
     label,
     hint,
@@ -25,8 +20,8 @@ export function TilePalette({
   return (
     <div className="space-y-3 rounded-lg border border-mj-border bg-mj-panel p-3">
       <p className="text-xs text-[var(--muted)]">
-        Tap a tile to select, then add to hand, discard river, or meld. Numbers show
-        copies left in the wall. {TILE_LEGEND}
+        Tap a tile once to add it (hand, discard river, meld, or dora — use the
+        buttons above). Numbers show copies left in the wall. {TILE_LEGEND}
       </p>
       {suits.map(({ label, hint, suit, tiles }) => (
         <div key={label}>
@@ -45,7 +40,6 @@ export function TilePalette({
                   <Tile
                     id={id}
                     small
-                    selected={selected === id}
                     onClick={disabled ? undefined : () => onSelect(id)}
                   />
                   <span

@@ -30,7 +30,6 @@ type AddMode = "hand" | Seat | "meld" | "dora";
 
 export default function HomePage() {
   const [state, setState, resetAll] = useGameState();
-  const [selectedTile, setSelectedTile] = useState<TileId | null>(null);
   const [addMode, setAddMode] = useState<AddMode>("hand");
   const [meldType, setMeldType] = useState<MeldType>("pon");
   const [pendingMeld, setPendingMeld] = useState<TileId[]>([]);
@@ -64,24 +63,15 @@ export default function HomePage() {
       } else {
         setState((s) => addDiscard(s, addMode as Seat, tile));
       }
-      setSelectedTile(null);
     },
     [addMode, meldType, pendingMeld.length, setState, state],
   );
 
   const onPaletteSelect = useCallback(
     (tile: TileId) => {
-      if (isDiscardMode(addMode)) {
-        placeTile(tile);
-        return;
-      }
-      if (selectedTile === tile) {
-        placeTile(tile);
-      } else {
-        setSelectedTile(tile);
-      }
+      placeTile(tile);
     },
-    [addMode, placeTile, selectedTile],
+    [placeTile],
   );
 
   const onHandTileClick = useCallback(
@@ -273,17 +263,16 @@ export default function HomePage() {
           </div>
 
           <TilePalette
-            selected={selectedTile}
             onSelect={onPaletteSelect}
             remaining={remaining}
           />
 
           <p className="text-xs text-[var(--muted)]">
             <strong className="text-[var(--text)]">Discards:</strong> choose a
-            discard river, then click a tile in your hand (one click). For tiles
-            not in your hand, use the palette once.{" "}
+            discard river, then click a tile in your hand, or tap once in the
+            palette.{" "}
             <strong className="text-[var(--text)]">Hand / meld / dora:</strong>{" "}
-            tap a palette tile twice to add.
+            pick the target above, then tap a palette tile once to add.
           </p>
         </div>
 
